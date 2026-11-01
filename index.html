@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书 · 信息流</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 顶部标题栏 -->
+  <header class="app-header">
+    <h1 class="app-title">小红书</h1>
+  </header>
+
+  <!-- 信息流容器：帖子由 js/app.js 根据 data/posts.js 渲染 -->
+  <main id="feed" class="feed" aria-label="帖子列表"></main>
+
+  <!-- 先加载 axios、本地数据源，再加载页面逻辑 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="data/posts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
