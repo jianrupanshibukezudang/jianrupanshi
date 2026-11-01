@@ -126,6 +126,24 @@ var LIKE_API  = 'http://localhost:8080/like/'; // 点赞（JSON 请求体）
 - 后端是纯计数器，不记录用户维度的点赞状态，"每个帖子只能赞一次"完全由前端的 `localStorage` 保证
 - 后端已开放全量 CORS，前端以 `file://` 或任意端口打开均可跨域访问
 
+## 开发说明
+
+- **无需安装依赖、无需构建**：本项目为纯静态页面，修改源码后刷新浏览器即可生效。
+- **代码约定**：
+  - 脚本通过普通 `<script>` 标签按顺序加载，帖子数据挂载在 `window.POSTS`；请勿改为 ES Module，否则以 `file://` 直接打开页面时会触发跨域限制。
+  - 页面逻辑集中在 `js/app.js` 的 IIFE 中；更换后端地址时只需修改文件顶部的 `LIKES_API`、`LIKE_API` 常量。
+  - 渲染数据前需经过 `escapeHtml` 转义，新增文案字段时不要绕过。
+- **Git 工作流**：默认分支 `main`；提交信息遵循 [Conventional Commits](https://www.conventionalcommits.org/zh-hans/) 规范，常用类型前缀如下：
+
+| 前缀 | 用途 |
+| --- | --- |
+| `feat` | 新功能 |
+| `fix` | 缺陷修复 |
+| `docs` | 文档变更（如本 README） |
+| `style` | 不影响逻辑的样式调整 |
+| `refactor` | 不改变行为的代码重构 |
+| `chore` | 工程化、配置等杂项 |
+
 ## 后续可扩展方向
 
 - 帖子数据改为后端接口动态获取，移除本地 `posts.js`
